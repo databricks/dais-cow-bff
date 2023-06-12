@@ -1,5 +1,10 @@
 {
     "python.envFile": "${workspaceFolder}/.databricks/.databricks.env",
     "databricks.python.envFile": "${workspaceFolder}/.env",
-    "databricks.sync.destinationType": "workspace"
+    "databricks.sync.destinationType": "workspace",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
