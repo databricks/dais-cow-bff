@@ -1,0 +1,4 @@
+.venv/
+.databricks/
+__pycache__
+attic/
