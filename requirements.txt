@@ -1,0 +1,5 @@
+ipykernel
+pytest
+plotly
+nbformat
+databricks-connect==13.1.0
