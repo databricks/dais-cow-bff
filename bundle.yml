@@ -1,0 +1,19 @@
+bundle:
+  name: cow_bff
+
+workspace:
+  host: https://adb-1966697730403610.10.azuredatabricks.net/
+
+resources:
+  jobs:
+    daily_report:
+      name: "[${bundle.environment}] Cow BFF report"
+      tasks:
+        - task_key: daily_report
+          existing_cluster_id: 0615-151522-nerfztwx
+          notebook_task:
+            notebook_path: "notebooks/Cow BFF.ipynb"
+
+environments:
+  development:
+    default: true
