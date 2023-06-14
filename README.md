@@ -24,3 +24,11 @@ Run command "Prefernced: Open User Settings (JSON)" and add the following block:
     "import sys; sys.path.append('${workspaceFolder}')"
   ],
 ```
+
+## Running unit tests
+
+```sh
+pytest -v tests --disable-warnings
+```
+```
+```
