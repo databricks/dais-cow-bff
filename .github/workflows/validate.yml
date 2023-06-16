@@ -1,0 +1,52 @@
+name: Cow BFF (validate)
+
+concurrency: staging_environment
+
+on:
+  workflow_dispatch:
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - main
+
+jobs:
+  unit-tests:
+    name: "Unit tests"
+    environment: Staging
+    runs-on: ubuntu-latest
+    env:
+      DATABRICKS_CLUSTER_ID: ${{ vars.DATABRICKS_CLUSTER_ID }}
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Run unit tests
+        run: pytest -s -v tests/ --disable-warnings 
+
+  deploy:
+    name: "Deploy bundle and run notebook"
+    environment: Staging
+    runs-on: ubuntu-latest
+    env:
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: databricks/setup-cli@main
+      - name: Deploy bundle
+        run: databricks bundle deploy -e qa
+      - name: Run notebook
+        run: databricks bundle -e qa run daily_report

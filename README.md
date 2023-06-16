@@ -30,5 +30,3 @@ Run command "Prefernced: Open User Settings (JSON)" and add the following block:
 ```sh
 pytest -v tests --disable-warnings
 ```
-```
-```
