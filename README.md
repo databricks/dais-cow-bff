@@ -13,7 +13,7 @@ pip install -r requirements.txt
 
 ## Setup VS Code
 
-Run command "Prefernces: Open User Settings (JSON)" and add the following block:
+Run command "Preferences: Open User Settings (JSON)" and add the following block:
 
 ```
   "jupyter.runStartupCommands": [ 
