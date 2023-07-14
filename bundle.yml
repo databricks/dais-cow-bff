@@ -7,7 +7,7 @@ workspace:
 resources:
   jobs:
     daily_report:
-      name: "[${bundle.environment}] Cow BFF report"
+      name: "[${bundle.environment} - ${workspace.current_user.userName}] Cow BFF report"
       job_clusters:
         - job_cluster_key: cow_cluster
           new_cluster:
@@ -24,12 +24,17 @@ environments:
   development:
     default: true
 
-  qa: {}
+  qa:
+    resources:
+      jobs:
+        daily_report:
+          name: "[${bundle.environment}] Cow BFF report"
 
   production:
     resources:
       jobs:
         daily_report:
+          name: "[${bundle.environment}] Cow BFF report"
           job_clusters:
             - job_cluster_key: daily_report
               new_cluster:
