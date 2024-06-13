@@ -14,11 +14,11 @@ jobs:
     environment: Prod
     runs-on: ubuntu-latest
     env:
-      DATABRICKS_CLUSTER_ID: ${{ vars.DATABRICKS_CLUSTER_ID }}
-      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      DATABRICKS_CLUSTER_ID: ${{ vars.DATABRICKS_CLUSTER_ID }} # The spark unit test will run on this cluster via databricks-connect
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }} # The spark unit test will run on this workspace via databricks-connect
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }} # uses a service principal for databricks-connect
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }} # uses a service principal for databricks-connect
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }} # uses a service principal for databricks-connect
 
     steps:
       - uses: actions/checkout@v3
@@ -35,9 +35,9 @@ jobs:
     environment: Prod
     runs-on: ubuntu-latest
     env:
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }} # service principal to trigger the DAB deployment and run
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }} # service principal to trigger the DAB deployment and run
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }} # service principal to trigger the DAB deployment and run
 
     steps:
       - uses: actions/checkout@v3
