@@ -11,11 +11,12 @@ on:
 jobs:
   deploy:
     name: "Deploy bundle and run notebook"
-    environment: Dogfood
+    environment: Prod
     runs-on: ubuntu-latest
     env:
       DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
-      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+      DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+      DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
 
     steps:
       - uses: actions/checkout@v3
