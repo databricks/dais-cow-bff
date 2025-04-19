@@ -21,7 +21,7 @@ targets:
 
   production:
     workspace:
-      host: https://e2-dogfood.staging.cloud.databricks.com/
+      host: https://adb-52629278589594.14.azuredatabricks.net/
     resources:
       jobs:
         daily_report:
