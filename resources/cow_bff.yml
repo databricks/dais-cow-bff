@@ -2,14 +2,7 @@ resources:
   jobs:
     daily_report:
       name: "[${bundle.target} - ${workspace.current_user.userName}] Cow BFF report"
-      job_clusters:
-        - job_cluster_key: cow_cluster
-          new_cluster:
-            spark_version: 15.2.x-scala2.12
-            num_workers: 1
-            node_type_id: Standard_DS3_v2
       tasks:
         - task_key: cow_report
-          job_cluster_key: cow_cluster
           notebook_task:
             notebook_path: "../notebooks/Cow BFF.ipynb"
