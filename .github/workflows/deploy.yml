@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     name: "Deploy bundle and run notebook"
-    environment: Prod
+    environment: Lighthouse
     runs-on: ubuntu-latest
     env:
       DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
