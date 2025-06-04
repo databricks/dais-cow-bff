@@ -15,8 +15,7 @@ permissions:
 jobs:
   deploy:
     runs-on: [linux-ubuntu-latest]
-    name: "Update git folder "
-    runs-on: ubuntu-latest
+    name: "Update git folder"
     environment: e2-demo 
     env:
       DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
