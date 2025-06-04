@@ -20,8 +20,8 @@ jobs:
       # DATABRICKS_TOKEN_AUDIENCE: https://databricks.com               # Optional. Must match the audience set in the policy.
 
       DATABRICKS_AUTH_TYPE: github-oidc
-      DATABRICKS_HOST: https://dbc-63dde4c3-2757.cloud.databricks.com/
-      DATABRICKS_CLIENT_ID: 6d0413c1-07ab-4910-941f-c11dd8471ad2
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+      DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
       
 
     steps:
