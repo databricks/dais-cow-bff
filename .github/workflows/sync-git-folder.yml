@@ -14,6 +14,7 @@ permissions:
 
 jobs:
   deploy:
+    runs-on: [linux-ubuntu-latest]
     name: "Update git folder "
     runs-on: ubuntu-latest
     environment: e2-demo 
