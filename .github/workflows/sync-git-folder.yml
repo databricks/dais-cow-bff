@@ -1,0 +1,25 @@
+name: Cow BFF (sync Git Folder)
+
+concurrency: prod_environment 
+
+on:
+  push:
+    branches:
+      # Set your base branch name here
+      - cicd-doc-revamp
+
+jobs:
+  deploy:
+    name: "Update git folder "
+    environment: Lighthouse
+    runs-on: ubuntu-latest
+    env:
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+      DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+      DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: databricks/setup-cli@main
+      - name: Update git folder
+        run: databricks repos update 4283197629343453 --branch cicd-doc-revamp
