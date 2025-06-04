@@ -8,10 +8,13 @@ on:
       # Set your base branch name here
       - cicd-doc-revamp
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   deploy:
     name: "Update git folder "
-    environment: Lighthouse
     runs-on: ubuntu-latest
     env:
       # DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
