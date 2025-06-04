@@ -15,7 +15,7 @@ permissions:
 jobs:
   deploy:
     name: "Update git folder "
-    runs-on: ubuntu-latest
+    runs-on: [linux-ubuntu-latest]
     environment: Lighthouse # this environment currently has no secrets or vars
     env:
       # DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
