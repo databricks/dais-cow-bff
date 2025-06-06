@@ -1,4 +1,4 @@
-name: Cow BFF (sync Git Folder)
+name: Sync Git Folder
 
 concurrency: prod_environment 
 
