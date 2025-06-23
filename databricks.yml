@@ -8,12 +8,12 @@ targets:
   development:
     default: true
     workspace:
-      host: https://adb-1966697730403610.10.azuredatabricks.net/
+      host: https://dbc-63dde4c3-2757.cloud.databricks.com/
 
 
   qa:
     workspace:
-      host: https://adb-1966697730403610.10.azuredatabricks.net/ # can be different from dev
+      host: https://dbc-63dde4c3-2757.cloud.databricks.com/ # can be different from dev
     resources:
       jobs:
         daily_report:
