@@ -16,25 +16,12 @@ jobs:
   deploy:
     name: "Update git folder "
     runs-on: [linux-ubuntu-latest]
-    environment: Lighthouse # this environment currently has no secrets or vars
+    environment: Lighthouse 
     env:
-      # DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
-      # DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
-      # DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
-      # DATABRICKS_TOKEN_AUDIENCE: https://databricks.com               # Optional. Must match the audience set in the policy. based on https://databricks.slack.com/archives/C01KSAWFXG8/p1746769880106989?thread_ts=1746109981.365249&cid=C01KSAWFXG8
-      # DATABRICKS_TOKEN_AUDIENCE: https://github.com/databricks               # Optional. Must match the audience set in the policy.
-
-      DATABRICKS_AUTH_TYPE: github-oidc
-      DATABRICKS_HOST: https://dbc-63dde4c3-2757.cloud.databricks.com/
-      DATABRICKS_CLIENT_ID: 6d0413c1-07ab-4910-941f-c11dd8471ad2 # application id for the SP in the workspace above
-      
-      
-
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+      DATABRICKS_CLIENT_ID: ${{ vars.DATABRICKS_CLIENT_ID }}
+      DATABRICKS_AUTH_TYPE: github-oidc      
     steps:
-      # - uses: actions/checkout@v3
       - uses: databricks/setup-cli@main
-      - name: Describe where we authenticate to
-        run: databricks auth describe
       - name: Update git folder
-        run: databricks repos update 4227239831238429 --branch cicd-doc-revamp --debug
-        # this is the Git folder at /Workspace/Production/dais-cow-bff
+        run: databricks repos update /Workspace/Production/dais-cow-bff --branch cicd-doc-revamp 
