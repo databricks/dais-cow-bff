@@ -31,8 +31,10 @@ jobs:
       
 
     steps:
-      - uses: actions/checkout@v3
+      # - uses: actions/checkout@v3
       - uses: databricks/setup-cli@main
+      - name: Describe where we authenticate to
+        run: databricks auth describe
       - name: Update git folder
         run: databricks repos update 4227239831238429 --branch cicd-doc-revamp --debug
         # this is the Git folder at /Workspace/Production/dais-cow-bff
